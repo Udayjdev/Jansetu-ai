@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+  }
+
+  button, input, textarea, select { font: inherit; }
+
+  /* ---------- Layout ---------- */
+  .app { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 245px;
+    padding: 22px 16px;
+    background: #111827;
+    color: #dbe3ef;
+  }
+
+  .logo { margin: 4px 10px 30px; font-size: 22px; font-weight: 800; color: #fff; }
+  .logo span { color: #60a5fa; }
+
+  .nav {
+    display: flex;
+    gap: 12px;
+    margin: 6px 0;
+    padding: 12px 13px;
+    border-radius: 10px;
+    color: #aebbd0;
+    cursor: pointer;
+  }
+  .nav.active, .nav:hover { background: #1f2937; color: #fff; }
+  .nav b { font-size: 14px; }
+
+  .main {
+    margin-left: 245px;
+    width: calc(100% - 245px);
+    padding: 26px 30px;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .top h1 { margin: 0; font-size: 27px; }
+  .top p { margin: 5px 0 0; color: #6b7280; }
+
+  .lang {
+    padding: 9px 12px;
+    border: 1px solid #d8dee8;
+    border-radius: 9px;
+    background: #fff;
+  }
+
+  /* ---------- Metric cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+
+  .card {
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #e5e9f0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #1118270a;
+  }
+
+  .metric { margin: 8px 0; font-size: 29px; font-weight: 800; }
+  .muted { font-size: 13px; color: #778195; }
+
+  .green  { color: #059669; }
+  .orange { color: #d97706; }
+  .red    { color: #dc2626; }
+  .blue   { color: #2563eb; }
+
+  /* ---------- Sections ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1.45fr 0.8fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .section {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e5e9f0;
+    border-radius: 14px;
+  }
+  .section h2 { margin: 0 0 15px; font-size: 17px; }
+
+  /* ---------- Map ---------- */
+  .map {
+    position: relative;
+    height: 355px;
+    overflow: hidden;
+    border-radius: 12px;
+    background:
+      linear-gradient(32deg, transparent 48%, #d7dee9 49%, #d7dee9 50%, transparent 51%),
+      linear-gradient(118deg, transparent 47%, #d7dee9 48%, #d7dee9 49%, transparent 50%),
+      linear-gradient(#eef3f8 1px, transparent 1px),
+      linear-gradient(90deg, #eef3f8 1px, transparent 1px);
+    background-size: auto, auto, 32px 32px, 32px 32px;
+  }
+
+  .map::after {
+    content: "Basti District • Civic Request Heatmap";
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    padding: 8px 11px;
+    border-radius: 8px;
+    background: #ffffffdd;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .pin {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ef4444;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px #0003;
+  }
+  .pin.o { background: #f59e0b; }
+  .pin.g { background: #10b981; }
+  .pin::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.1;
+  }
+
+  .p1 { left: 23%; top: 34%; }
+  .p2 { left: 48%; top: 51%; }
+  .p3 { left: 67%; top: 27%; }
+  .p4 { left: 76%; top: 65%; }
+  .p5 { left: 38%; top: 72%; }
+  .p6 { left: 56%; top: 21%; }
+
+  .legend {
+    display: flex;
+    gap: 15px;
+    margin-top: 11px;
+    font-size: 12px;
+    color: #687386;
+  }
+  .dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 4px;
+    border-radius: 50%;
+  }
+  .criticalDot { background: #ef4444; }
+  .highDot     { background: #f59e0b; }
+  .normalDot   { background: #10b981; }
+
+  /* ---------- Priority list ---------- */
+  .requests { display: flex; flex-direction: column; gap: 10px; }
+
+  .req {
+    padding: 13px;
+    border: 1px solid #e7ebf2;
+    border-radius: 10px;
+  }
+  .reqtop { display: flex; justify-content: space-between; }
+  .req p { margin: 8px 0; font-size: 13px; line-height: 1.45; color: #465166; }
+
+  .tag {
+    padding: 4px 8px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+  }
+  .score { font-weight: 800; }
+  .meta { font-size: 11px; color: #8791a3; }
+
+  /* ---------- Category bars ---------- */
+  .barrow { margin: 13px 0; }
+  .barhead {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .bar { height: 8px; overflow: hidden; border-radius: 20px; background: #edf0f5; }
+  .fill { height: 100%; border-radius: 20px; background: #2563eb; }
+
+  /* ---------- Buttons ---------- */
+  .cta { display: flex; gap: 10px; }
+
+  .btn {
+    padding: 11px 15px;
+    border: 0;
+    border-radius: 9px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .primary   { background: #2563eb; color: #fff; }
+  .secondary { background: #eef2f7; color: #334155; }
+
+  /* ---------- Modal ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #0f172a88;
+  }
+
+  .modal {
+    width: min(600px, 100%);
+    padding: 24px;
+    border-radius: 16px;
+    background: #fff;
+  }
+  .modal h2 { margin-top: 0; }
+
+  .modal textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid #d7deea;
+    border-radius: 10px;
+    resize: none;
+  }
+
+  .modal .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .modal input, .modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d7deea;
+    border-radius: 9px;
+  }
+
+  .result {
+    margin-top: 15px;
+    padding: 14px;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    background: #f0fdf4;
+  }
+
+  .close {
+    float: right;
+    border: 0;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .sidebar { width: 70px; }
+    .logo { font-size: 0; }
+    .logo span { font-size: 20px; }
+    .nav b { display: none; }
+    .main { margin-left: 70px; width: calc(100% - 70px); padding: 18px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .grid, .bottom { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .cards { grid-template-columns: 1fr; }
+    .top { align-items: flex-start; gap: 10px; }
+    .top h1 { font-size: 22px; }
+  }
