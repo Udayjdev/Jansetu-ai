@@ -1,13 +1,13 @@
 import { CATEGORY_OPTIONS } from "../data";
 import AnalysisResult from "./AnalysisResult";
- 
+
 export default function ReportModal({
-issueText,
-onIssueChange,
-onAnalyze,
-onClose,
-showResult,
-result,
+  issueText,
+  onIssueChange,
+   AnalysisResult,
+  onClose,
+  showResult,
+  result,
 }) {
   return (
     <div className="overlay">
