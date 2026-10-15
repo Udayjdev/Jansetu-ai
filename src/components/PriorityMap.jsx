@@ -1,9 +1,13 @@
 import { MAP_PINS, MAP_LEGEND } from "../data";
+import { translations } from "../translations";
+import FreePriorityMap from "./FreePriorityMap";
 
-export default function PriorityMap() {
+export default function PriorityMap({ language = "en" }) {
+  const t = translations[language] ?? translations.en;
+
   return (
     <section className="section">
-      <h2>AI Priority Map</h2>
+      <h2>{t.priorityMap}</h2>
 
       <div className="map">
         {MAP_PINS.map(({ position, level }) => (

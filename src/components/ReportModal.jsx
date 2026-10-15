@@ -1,29 +1,43 @@
 import { CATEGORY_OPTIONS } from "../data";
 import AnalysisResult from "./AnalysisResult";
- 
+import VoiceAssistant from "./VoiceAssistant";
+ import ComplaintInput from "./ComplaintInput";
 export default function ReportModal({
 issueText,
+setIssueText,
 onIssueChange,
 onAnalyze,
+isAnalyzing,
 onClose,
 showResult,
 result,
 }) {
   return (
-    <div className="overlay">
+    <div className="modal-overlay" style={{ zIndex: 9999}}>
       <div className="modal">
-        <button className="close" onClick={onClose}>×</button>
+        <button className="close" onClick={onClose}>
+          (x)
+        </button>
 
         <h2>Submit a Citizen Request</h2>
         <p className="muted">
           Prototype: voice/text → AI extraction → priority recommendation.
         </p>
+          <div>
+            <ComplaintInput
+            issueText={issueText}
+            setIssueText={setIssueText}
+            />
 
-        <textarea
-          value={issueText}
-          onChange={(e) => onIssueChange(e.target.value)}
-          placeholder="Example: हमारे गांव की मुख्य सड़क बारिश में टूट गई है और पानी भर जाता है..."
-        />
+        {/* <button
+  type="button"
+  onClick={() => {
+    setIssueText("Testing voice-to-text connection");
+  }}
+  className="rounded-lg bg-green-600 px-4 py-2 text-white"
+>
+  Test Text Connection
+  */}
 
         <div className="row">
           <input placeholder="Location / Ward" defaultValue="Ward 14" />
@@ -38,11 +52,13 @@ result,
           className="btn primary"
           style={{ marginTop: 12, width: "100%" }}
           onClick={onAnalyze}
+          disabled={isAnalyzing}
         >
-          Analyze with AI
+          {isAnalyzing ? "Analyzing..." : "Analyze with AI"}
         </button>
 
         {showResult && <AnalysisResult result={result} />}
+      </div>
       </div>
     </div>
   );

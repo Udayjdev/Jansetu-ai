@@ -1,4 +1,4 @@
-// Demo data — replace with Firestore / Gemini responses later.
+// Demo data — replace with Firestore / AI responses later.
 
 export const NAV_ITEMS = [
   { icon: "◈", label: "Command Center", active: true },
@@ -71,7 +71,7 @@ export const CATEGORY_OPTIONS = [
   "Healthcare",
 ];
 
-// Fake AI output shown after "Analyze with AI". Swap for the Gemini response.
+// Fake AI output shown after "Analyze with AI". Swap for the AI response.
 export const DEMO_ANALYSIS = {
   category: "Water & drainage",
   severity: "High",

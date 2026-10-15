@@ -21,7 +21,11 @@ export default function AnalysisResult({ result = DEMO_ANALYSIS }) {
       </div>
 
       <span className="meta">
-        Demo result — connect Gemini + Maps + database for live analysis.
+        {result.source === "groq"
+          ? "Analyzed live by AI (Groq · gpt-oss-20b)."
+          : result.source === "local"
+          ? "Analyzed by local keyword fallback (AI unavailable)."
+          : "Demo result."}
       </span>
     </div>
   );

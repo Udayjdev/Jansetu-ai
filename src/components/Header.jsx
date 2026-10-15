@@ -19,6 +19,10 @@ export default function Header({ onReportClick, lang, onLangChange }) {
       <div>
         <h1>{t.title}</h1>
         <p>{t.subtitle}</p>
+
+        <button type="button" onClick={onReportClick}>
+          + Report Issue
+        </button>
       </div>
 
       <div className="cta">
